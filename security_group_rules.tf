@@ -1,0 +1,29 @@
+resource "aws_security_group_rule" "ing_tcp_ingress" {
+  security_group_id = aws_security_group.default_group.id
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "TCP"
+  cidr_blocks       = ["0.0.0.0/0"]
+
+}
+
+resource "aws_security_group_rule" "ing_http_ingress" {
+  security_group_id = aws_security_group.default_group.id
+  type              = "ingress"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "TCP"
+  cidr_blocks       = ["0.0.0.0/0"]
+
+}
+
+resource "aws_security_group_rule" "egress_rule" {
+  security_group_id = aws_security_group.default_group.id
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["0.0.0.0/0"]
+
+}
